@@ -5,6 +5,7 @@ import {useNetworkActivityStatusBar} from '@/utils';
 
 // Redux
 import {AppActions, ProductActions} from '@/redux';
+import { Alert } from 'react-native';
 
 export function* getProductSaga(api: any, action: any): any {
   try {
@@ -16,10 +17,10 @@ export function* getProductSaga(api: any, action: any): any {
       action?.success && action?.success()
     } else {
       yield put(ProductActions.getProductFailure());
-      action?.failure && action?.failure()
+      Alert.alert("Lỗi, kết nối máy chủ thất bại.")
     }
   } catch (error) {
     yield put(ProductActions.getProductFailure(error));
-    action?.failure && action?.failure()
+    Alert.alert("Lỗi, kết nối máy chủ thất bại.")
   }
 }

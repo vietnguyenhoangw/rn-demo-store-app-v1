@@ -1,5 +1,5 @@
 import React, {useRef, useState, memo, useEffect} from 'react';
-import {FlatList, RefreshControl, TouchableOpacity} from 'react-native';
+import {Alert, FlatList, RefreshControl, TouchableOpacity} from 'react-native';
 
 // Styles
 import styles from './styles';
@@ -28,7 +28,7 @@ const HomeScreen = memo((props: any) => {
   const dispatch = useDispatch();
   const productState = useSelector((state: any) => state?.product);
   const products = productState?.products;
-  const isFetchingGetProducts = productState?.isFetchingGetProducts
+  const isFetchingGetProducts = productState?.isFetchingGetProducts;
 
   useEffect(() => {
     dispatch(ProductActions.getProductRequest());
